@@ -1,6 +1,6 @@
 import cloudscraper
 from flask import Flask, request, jsonify
-import re
+import re, os
 from bs4 import BeautifulSoup
 from concurrent.futures import ThreadPoolExecutor
 import time
@@ -52,5 +52,5 @@ def search_stickers():
         return jsonify({"total": 0, "result": [], "time_taken": time.time() - start})
 
 
-if __name__ == '__main__':
-    app.run()
+if __name__ == "__main__":
+    app.run(debug=True, port=os.environ.get('PORT', 5000))
